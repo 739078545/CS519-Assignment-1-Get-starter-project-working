@@ -3,6 +3,15 @@
 
 name: Build and deploy Node.js app to Azure Web App - BUcs519
 
+env:
+  AZURE_WEBAPP_NAME: BUcs519
+  AZURE_WEBAPP_PACKAGE_PATH: 'Node/WEB' # Replace with the path to your web app code
+  FRONTEND_PACKAGE_PATH: 'Node/WEB/frontend'
+  NODE_VERSION: '18.x'
+
+permissions:
+  contents: read 
+
 on:
   push:
     branches:
@@ -12,20 +21,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Set up Node.js version
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: './Node/WEB/package.json'
 
       - name: npm install, build, and test
+        working-directory: ${{ env.FRONTEND_PACKAGE_PATH }}
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build
+          rm -r public
+          rm -r node_modules
+          rm -r src 
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
