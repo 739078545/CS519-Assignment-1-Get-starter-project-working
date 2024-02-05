@@ -80,5 +80,5 @@ jobs:
         with:
           app-name: 'BUcs519'
           slot-name: 'Production'
-          package: ${{ env.FRONTEND_PACKAGE_PATH }}
+          package: .
           
