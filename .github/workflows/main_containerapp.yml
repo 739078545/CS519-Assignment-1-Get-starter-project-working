@@ -24,6 +24,6 @@ jobs:
         uses: azure/container-apps-deploy-action@v1
         with:
           appSourcePath: ${{ github.workspace }}/Node/API2
-          acrName: cs519containerapp
-          containerAppName: cs519docker
-          resourceGroup: cs519continerapp
+          acrName: cs519ca
+          containerAppName: cs519ca
+          resourceGroup: hw2
