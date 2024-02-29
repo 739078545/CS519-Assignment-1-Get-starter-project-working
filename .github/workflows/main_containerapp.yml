@@ -26,4 +26,4 @@ jobs:
           appSourcePath: ${{ github.workspace }}/Node/API2
           acrName: cs519containerapp
           containerAppName: cs519docker
-          resourceGroup: cs519containerapp
+          resourceGroup: cs519continerapp
