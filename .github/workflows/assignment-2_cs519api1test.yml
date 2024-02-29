@@ -7,8 +7,8 @@ on:
   push:
     branches:
       - Assignment-2
-      paths:
-        - "Node/API1/**"
+    paths:
+      - "Node/API1/**"
   workflow_dispatch:
 
 env:
