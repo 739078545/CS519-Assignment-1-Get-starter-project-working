@@ -7,10 +7,13 @@ on:
   push:
     branches:
       - Assignment-2
+      paths:
+        - "Node/API1/**"
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBFUNTION_NAME: cs519apI1test # set this to your function app name
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Node/API1' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
 
 jobs:
@@ -33,12 +36,15 @@ jobs:
           npm run build --if-present
           npm run test --if-present
           popd
+      
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: release.zip
 
   deploy:
     runs-on: windows-latest
@@ -54,13 +60,16 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
-      
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_98392F12CD034139B30084EC161C5362 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DB7C3246BC2049EE8F59625B33FC15D9 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_10DDFD7CDD254299BCC6E0F1EE4C0035 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F1EE48D4DBA54BF98E1BD2EF177F443A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_877FBCBC79E04983B401BE3D292657C2 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F9BDF35EE4D0410E81FD52FCE4F103DF }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
