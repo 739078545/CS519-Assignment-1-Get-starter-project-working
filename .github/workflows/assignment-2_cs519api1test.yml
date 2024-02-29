@@ -6,7 +6,7 @@ name: Build and deploy Node.js project to Azure Function App - cs519apI1test
 on:
   push:
     branches:
-      - main
+      - Assignment-2
     paths:
       - "Node/API1/**"
   workflow_dispatch:
@@ -64,12 +64,13 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
+      
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_870B38647B0C4CC4A1C70564152697D3 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E477AF8F449249D8BE0A90E8FD825964 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5644369B96324F1586270DCCF3CBE9FF }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FCA2E74D827D4EC2ACF422E083981F1F }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1569D5A8E8C745E991E96A8E8CF53C8C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_25DCA68AAA5342F28D4B755D4ED6133E }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
@@ -78,4 +79,3 @@ jobs:
           app-name: 'cs519apI1test'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          
