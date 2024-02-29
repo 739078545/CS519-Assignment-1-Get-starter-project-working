@@ -14,7 +14,7 @@ on:
 env:
   AZURE_WEBFUNTION_NAME: cs519apI1test # set this to your function app name
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Node/API1' # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '18.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
+  NODE_VERSION: '16.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
 
 jobs:
   build:
@@ -63,7 +63,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-        
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
