@@ -1,4 +1,5 @@
 Here is the documentation for my Github.
+
 GitHub Workflows: This component orchestrates the automated processes that facilitate software development practices, including integration, testing, and deployment, contingent upon modifications to the codebase. The directional flow designated as "North-South" signifies the bi-directional interaction between the developers committing code and the GitHub Workflows.
 
 Container Registry: This repository maintains the container images which have been synthesized through the build pipeline. These encapsulated images are in a state primed for retrieval and subsequent deployment within containerized application environments.
