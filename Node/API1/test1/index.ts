@@ -5,15 +5,14 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const today = new Date();
     const dateString = today.toISOString().split('T')[0];
     const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "Today's date is " + dateString; // Add this line to return today's date
+    const secret2Value = process.env.Secret2 || "Default Secret Value";
+    const responseMessage = `Secret2 = ${secret2Value}`;
+    
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
     };
-    const functionSecret = process.env.Secret2;
-    context.log('FunctionSecret', functionSecret);
+    
 
 };
 
