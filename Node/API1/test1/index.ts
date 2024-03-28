@@ -12,6 +12,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         // status: 200, /* Defaults to 200 */
         body: responseMessage
     };
+    const functionSecret = process.env.Secret2;
+    context.log('FunctionSecret', functionSecret);
 
 };
 
