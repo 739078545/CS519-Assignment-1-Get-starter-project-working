@@ -12,11 +12,12 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         // status: 200, /* Defaults to 200 */
         body: responseMessage
     };
-    const secretValue = process.env.Secret2 || "This is Secret #2";
+    // log the kv value to Azure Function App
+    const Secret2 = process.env.Secret2;
+    context.log(`Value of Secret2 is: ${Secret2}`);
 
-    // Log the desired message with the value
-    const logMessage = `Secret2 = ${secretValue}`;
-    context.log(logMessage);
+    // store a string in Queue Storage
+    context.bindings.myQueueItem = `Function is triggered! And the value of Secret2 is ${Secret2}`
 
 };
 
