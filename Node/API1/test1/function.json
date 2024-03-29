@@ -18,9 +18,9 @@
     {
       "type": "queue",
       "direction": "out",
-      "name": "myQueueItem",
+      "name": "outputQueueItem",
       "queueName": "api1queue",
-      "connection": "MyStorageConnectionAppSetting"
+      "connection": "AzureWebJobsStorage"
     }
   ],
   "scriptFile": "../dist/test1/index.js"
