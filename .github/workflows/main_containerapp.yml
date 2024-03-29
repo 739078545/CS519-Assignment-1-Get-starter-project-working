@@ -28,4 +28,4 @@ jobs:
           containerAppName: cs519ca
           resourceGroup: hw2
           containerAppEnvironment: secret3
-          environmentVariables: AzureWebJobsMyStorage=${{secrets.secret3}}
+          environmentVariables: Secret3=secretref:secret3 MyStorageConnectionAppSetting=secretref:queueconnection
