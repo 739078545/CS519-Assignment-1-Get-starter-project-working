@@ -15,3 +15,6 @@ Users: These are the individuals who utilize the Web App, interfacing with it ac
 Resource Group: This construct represents an organizational unit within cloud infrastructure that aggregates correlated resources for streamlined management and deployment of applications.
 
 East-West Networking Boundaries: Within this delineation, all "East-West" marked arrows depict intra-network communication, implying an exchange of data transpiring internally and not traversing beyond the bounds of the external internet.
+
+Queue storage pipeline:The API1 Azure function will push messages into queue storage. https://cs519api1test.azurewebsites.net
+Whenever API1 receives a call (using HTTPS GET), it retrieves SECRET2 from the environment variables (originally sourced from Azure Key Vault). API1 then logs this information and places it into the Azure Queue Storage named "api1queue". The API2 Azure Container keeps an eye on the "api1queue" queue storage. As soon as a message lands in the "api1queue" queue storage, API2 captures and logs that message.
