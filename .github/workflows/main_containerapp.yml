@@ -27,3 +27,5 @@ jobs:
           acrName: cs519ca
           containerAppName: cs519ca
           resourceGroup: hw2
+          containerAppEnvironment: Secret3
+          environmentVariables: AzureWebJobsMyStorageConnectionAppSetting=${{secrets.AzureWebJobsMyStorageConnectionAppSetting}}
