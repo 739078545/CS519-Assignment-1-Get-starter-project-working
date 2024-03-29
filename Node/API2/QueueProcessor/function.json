@@ -5,7 +5,7 @@
       "direction": "in",
       "name": "outputQueueItem",
       "queueName": "api1queue",
-      "connection": "AzureWebJobsStorage"
+      "connection": "MyStorageConnectionAppSetting"
     }
   ]
 }
