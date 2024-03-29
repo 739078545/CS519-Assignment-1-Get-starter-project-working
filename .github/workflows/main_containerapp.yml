@@ -27,5 +27,5 @@ jobs:
           acrName: cs519ca
           containerAppName: cs519ca
           resourceGroup: hw2
-          containerAppEnvironment: Secret3
-          environmentVariables: AzureWebJobsMyStorage=${{secrets.Secret3}}
+          containerAppEnvironment: secret3
+          environmentVariables: AzureWebJobsMyStorage=${{secrets.secret3}}
